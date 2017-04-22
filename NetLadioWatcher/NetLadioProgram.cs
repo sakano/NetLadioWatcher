@@ -99,7 +99,7 @@ namespace NetLadioWatcher
         /// </summary>
         public string URL
         {
-            get => $"http://{ServerHost}:{ServerPort}/{Mount}.m3u";
+            get => $"http://{ServerHost}:{ServerPort}{Mount}.m3u";
         }
 
         public override bool Equals(object other) => other != null && other is NetLadioProgram program && DetailURL == program.DetailURL && StartTime == program.StartTime;
