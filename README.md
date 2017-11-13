@@ -13,7 +13,7 @@ namespace Example
       using (var watcher = new NetLadioWatcher.NetLadioWatcher(Encoding.GetEncoding("shift_jis"))) {
         watcher.Begun += (sender, e) => {
           // 新しい番組が始まったときに呼ばれる
-          
+
           // 番組の情報はNetLadioProgramとして取得できます。取得できる情報はクラス定義を参照してください
           NetLadioWatcher.NetLadioProgram p = e.Program;
           Console.WriteLine("新しい番組が始まりました。番組名:{0}、開始時刻:{1}", p.Title, p.StartTime);
@@ -31,10 +31,16 @@ namespace Example
         // 入力があるまで監視しながら待機
         Console.ReadLine();
 
+        // 放送中の番組一覧を出力
+        foreach (NetLadioWatcher.NetLadioProgram p in watcher.GetPrograms()) {
+          Console.WriteLine("番組名:{0}", p.Title);
+        }
+
         // ねとらじの監視を終了
         watcher.Stop();
       }
     }
   }
 }
+
 ```
